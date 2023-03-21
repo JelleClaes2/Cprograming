@@ -89,6 +89,25 @@ void sum(struct getal a,struct getal b){
             float sum = *((float *)a.data) + *((int *)b.data);
             printf("De som is %f\n",sum);
         } else if(a.type == GEHEEL && b.type == COMPLEX){
+            struct complex* c1 = (struct complex*) b.data;
+            float re = *((int*)a.data) + c1->reeel;
+            float im = c1->imaginair;
+            printf("De som is %f + %fi",re,im);
+        }else if(a.type == COMPLEX && b.type == GEHEEL){
+            struct complex* c1 = (struct complex*) a.data;
+            float re = *((int*)b.data) + c1->reeel;
+            float im = c1->imaginair;
+            printf("De som is %f + %fi",re,im);
+        }else if(a.type == KOMMA && b.type == COMPLEX){
+            struct complex* c1 = (struct complex*) b.data;
+            float re = *((float *)a.data) + c1->reeel;
+            float im = c1->imaginair;
+            printf("De som is %f + %fi",re,im);
+        }else if(a.type == COMPLEX && b.type == KOMMA){
+            struct complex* c1 = (struct complex*) a.data;
+            float re = *((float *)b.data) + c1->reeel;
+            float im = c1->imaginair;
+            printf("De som is %f + %fi",re,im);
         }
     }
 }
